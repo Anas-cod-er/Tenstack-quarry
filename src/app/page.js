@@ -2,6 +2,8 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import PostList from "../../components/post-list";
+import AddPost from "../../components/add-post";
 
 
 export default function Home() {
@@ -22,10 +24,10 @@ export default function Home() {
 //   }
 // }
 
-const {data, error, isLoading } =useQuery({
-  queryKey:["user-data"],
-  queryFn:()=>fetch("https://api.freeapi.app/api/v1/public/randomusers?page=1&limit=10").then((res)=>res.json())
-})
+// const {data, error, isLoading } =useQuery({
+//   queryKey:["user-data"],
+//   queryFn:()=>fetch("https://api.freeapi.app/api/v1/public/randomusers?page=1&limit=10").then((res)=>res.json())
+// })
 
 
 // useEffect(()=>{
@@ -33,24 +35,29 @@ const {data, error, isLoading } =useQuery({
 // },[])
 
 
-if(isLoading){
-  return(
-    <div>
-      Loading...
-    </div>
-  )
-}
+// if(isLoading){
+//   return(
+//     <div>
+//       Loading...
+//     </div>
+//   )
+// }
 
-if(error){
-  return(
-    <div>
-      {error}
-    </div>
-  )
-}
+// if(error){
+//   return(
+//     <div>
+//       {error}
+//     </div>
+//   )
+// }
   return (
+    // <div>
+    //   {JSON.stringify(data,null,2)}
+    // </div>
     <div>
-      {JSON.stringify(data,null,2)}
+      <h1>Posts</h1>
+      <PostList/>
+      <AddPost/>
     </div>
   );
 }
